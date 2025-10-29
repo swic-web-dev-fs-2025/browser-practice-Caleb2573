@@ -6,6 +6,7 @@ const greetingElement = document.getElementById(`greeting`);
 const button = document.getElementById(`change-greeting`);
 const resetButton = document.getElementById(`reset`);
 const countElement = document.getElementById(`click-count`);
+const userInput = prompt("Enter your greeting");
 
 function resetGreeting() {
   clickCount = 0;
@@ -20,6 +21,7 @@ function updateGreeting() {
     greetingElement.style.color = "blue";
   }
 }
+
 resetButton.addEventListener("click", resetGreeting);
 button.addEventListener("click", updateGreeting);
 
