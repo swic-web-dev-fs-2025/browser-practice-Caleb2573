@@ -2,31 +2,33 @@ import "./style.css";
 
 let clickCount = 0;
 
+const greetingElement = document.getElementById(`greeting`);
+const button = document.getElementById(`change-greeting`);
 const resetButton = document.getElementById(`reset`);
 const countElement = document.getElementById(`click-count`);
-const decrementButton = document.getElementById(`decrement`);
-const incrementButton = document.getElementById(`increment`);
+const userInput = document.getElementById(`user-input`);
 
-function reset() {
+function customGreeting() {
+  const newGreeting = userInput.value;
+  greetingElement.textContent = `${newGreeting}`;
+}
+
+function resetGreeting() {
   clickCount = 0;
   countElement.textContent = `Button clicks: ${clickCount}`;
 }
 
-function increment() {
+function updateGreeting() {
   clickCount++;
+  greetingElement.textContent = `Hello, Browser JavaScript!`;
   countElement.textContent = `Button clicks: ${clickCount}`;
-  if (clickCount >= 10) {
-    countElement.style.backgroundColor = "blue";
+  if (clickCount >= 5) {
+    greetingElement.style.color = "blue";
   }
 }
-function decrement() {
-  clickCount--;
-  countElement.textContent = `Button clicks: ${clickCount}`;
-}
-
-resetButton.addEventListener("click", reset);
-incrementButton.addEventListener("click", increment);
-decrementButton.addEventListener("click", decrement);
+userInput.addEventListener("change", customGreeting);
+resetButton.addEventListener("click", resetGreeting);
+button.addEventListener("click", updateGreeting);
 
 document.querySelector("#app").innerHTML = `
   <h1 class="text-3xl font-bold underline">
